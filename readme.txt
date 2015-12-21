@@ -1,0 +1,9 @@
+aqui ha arquivos do novo projeto auto viacao chapeco....
+projeto indicadores...
+
+favor colocar quando for commitar os codigos...
+
+commit #"numero do commit" e nome
+ex:  commit #1 Emerson
+
+e em baixo a descrição doque foi alterrado!
