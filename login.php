@@ -5,10 +5,10 @@
     <title>
         Projeto Indicadores
     </title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/style.css" />
 </head>
 <body>
-
+<div class="divcenter">
 <form method="post" action="valida.php">
   <h1>B E M - V I N D O</h1>
   <div class="inset">
@@ -30,6 +30,6 @@
     <input type="submit" name="go" id="go" value="Entrar">
   </p>
 </form>
-
+</div>
 </body>
 </html>

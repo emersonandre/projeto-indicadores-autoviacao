@@ -20,9 +20,11 @@ $result = mysqli_query($con,"SELECT * FROM usuario WHERE `usuario` = '$login' AN
 
 // Verifica se o usuario logado esta ativo.
 if(mysqli_num_rows ($result) > 0 ) { 
-    $_SESSION['login'] = $login; $_SESSION['senha'] = $senha; header('location:index.html'); }
+    $_SESSION['login'] = $login; $_SESSION['senha'] = $senha; header('location:dashboard.php'); }
     else{
         unset ($_SESSION['login']); 
-        unset ($_SESSION['senha']); 
-        header('location:login.php');;}
+        unset ($_SESSION['senha']);
+        header('location:login.php');
+        echo "<script>alert(\"The two password did not match.\");</script>";
+    }
 ?>

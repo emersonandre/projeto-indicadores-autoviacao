@@ -7,6 +7,10 @@ body {
   background:#333 ;
 }
 
+.divcenter{
+  margin-top: 10%;
+}
+
 form {
  	background:#111; 
   width:300px;
@@ -16,7 +20,7 @@ form {
   overflow:hidden;
   position:relative;
   box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);
-}
+  }
 
 form:after {
   content:"";
@@ -42,7 +46,7 @@ form:before {
 }
 
 .inset {
- 	padding:20px; 
+ 	padding:20px;
   border-top:1px solid #19191a;
 }
 
@@ -102,7 +106,7 @@ input[type=checkbox] {
 }
 
 .p-container {
- 	padding:0 20px 20px 20px; 
+ 	padding:0 20px 20px 20px;
 }
 
 .p-container:after {
