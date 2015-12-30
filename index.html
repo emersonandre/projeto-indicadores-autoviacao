@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<?php
-	include("seguranca.php"); // Inclui o arquivo com o sistema de segurança
-	protegePagina();
-	?>
 <html lang='PT-BR'>
 <head>
-	
-    <meta charset="UTF-8" /> 
-    <title>
-        Projeto Indicadores
-    </title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+	<?php
+	session_start();
+		if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+			{
+			unset($_SESSION['login']);
+			unset($_SESSION['senha']); 
+			header('location:index.php'); 
+			}
+		$logado = $_SESSION['login']; 
+	?>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+   <title>SISTEMA WEB</title> 
 </head>
 <body>
-bem vindo!
+bem vindo! <?php $login ?>
 </body>
-</html>
+</html> 

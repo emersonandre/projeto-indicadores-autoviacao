@@ -1,19 +1,28 @@
-<?php
-// Inclui o arquivo com o sistema de segurança
-require_once("seguranca.php");
-// Verifica se um formulário foi enviado
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  // Salva duas variáveis com o que foi digitado no formulário
-  // Detalhe: faz uma verificação com isset() pra saber se o campo foi preenchido
-  $usuario = (isset($_POST['usuario'])) ? $_POST['usuario'] : '';
-  $senha = (isset($_POST['senha'])) ? $_POST['senha'] : '';
-  // Utiliza uma função criada no seguranca.php pra validar os dados digitados
-  if (validaUsuario($usuario, $senha) == true) {
-    // O usuário e a senha digitados foram validados, manda pra página interna
-    header("Location: index.php");
-  } else {
-    // O usuário e/ou a senha são inválidos, manda de volta pro form de login
-    // Para alterar o endereço da página de login, verifique o arquivo seguranca.php
-    expulsaVisitante();
-  }
-}
+<?php 
+// session_start inicia a sessï¿½o session_start(); 
+// as variÃ¡veis login e senha recebem os dados digitados na pï¿½gina anterior
+
+$login = $_POST['usuario'];
+$senha = $_POST['senha'];
+
+//variaveis de conexÃ£o;
+
+$host = 'localhost';
+$usuario = 'master';
+$senhabd = '9748670';
+$banco = 'usuarios';
+
+//resolve conexÃ£o com o banco!
+$con = new mysqli($host, $usuario, $senhabd, $banco) or die ("Sem conexÃ£o com o servidor");
+
+//retorna resultado da consulta TRUE ou FALSE
+$result = mysqli_query($con,"SELECT * FROM usuario WHERE `usuario` = '$login' AND `senha`= '$senha'");
+
+// Verifica se o usuario logado esta ativo.
+if(mysqli_num_rows ($result) > 0 ) { 
+    $_SESSION['login'] = $login; $_SESSION['senha'] = $senha; header('location:index.html'); }
+    else{
+        unset ($_SESSION['login']); 
+        unset ($_SESSION['senha']); 
+        header('location:login.php');;}
+?>
