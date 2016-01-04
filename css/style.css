@@ -11,6 +11,22 @@ body {
   margin-top: 10%;
 }
 
+.frm {
+  background-color: #dddddd;
+  border: 1px solid #ffff00;
+  font-family: Verdana;
+  font-size: 8pt;
+  color: #eb9316;
+}
+.frm-on {
+  background-color: white;
+  border: 1px solid rgb(0,66,174);
+  font-family: Verdana;
+  font-size: 8pt;
+  color: rgb(0,66,174);
+  color: #dddddd;
+}
+
 form {
  	background:#111; 
   width:300px;

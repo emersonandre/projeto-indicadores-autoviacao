@@ -5,20 +5,20 @@
     <title>
         Projeto Indicadores
     </title>
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
 </head>
 <body>
-<div class="divcenter">
+
 <form method="post" action="valida.php">
   <h1>B E M - V I N D O</h1>
   <div class="inset">
   <p>
     <label for="email">Email ou Usuario</label>
-    <input type="text" name="usuario" id="email">
+    <input type="text" name="usuario" id="email" CLASS="frm" ONBLUR="this.className='frm'" ONFOCUS="this.className='frm-on'">
   </p>
   <p>
     <label for="password">Senha</label>
-    <input type="password" name="senha" id="password">
+    <input type="password" name="senha" id="password" CLASS="frm" ONBLUR="this.className='frm'" ONFOCUS="this.className='frm-on'">
   </p>
   <p>
     <input type="checkbox" name="remember" id="remember">
@@ -30,6 +30,6 @@
     <input type="submit" name="go" id="go" value="Entrar">
   </p>
 </form>
-</div>
+
 </body>
 </html>

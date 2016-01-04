@@ -17,14 +17,14 @@ $con = new mysqli($host, $usuario, $senhabd, $banco) or die ("Sem conexão com o
 
 //retorna resultado da consulta TRUE ou FALSE
 $result = mysqli_query($con,"SELECT * FROM usuario WHERE `usuario` = '$login' AND `senha`= '$senha'");
-
 // Verifica se o usuario logado esta ativo.
 if(mysqli_num_rows ($result) > 0 ) { 
-    $_SESSION['login'] = $login; $_SESSION['senha'] = $senha; header('location:dashboard.php'); }
+    $_SESSION['login'] = $login;
+    $_SESSION['senha'] = $senha;
+    header('location:dashboard.php'); }
     else{
         unset ($_SESSION['login']); 
         unset ($_SESSION['senha']);
-        header('location:login.php');
-        echo "<script>alert(\"The two password did not match.\");</script>";
+        header('location:index.php');
     }
 ?>
