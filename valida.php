@@ -16,7 +16,7 @@ $banco = 'usuarios';
 $con = new mysqli($host, $usuario, $senhabd, $banco) or die ("Sem conexão com o servidor");
 
 //retorna resultado da consulta TRUE ou FALSE
-$result = mysqli_query($con,"SELECT * FROM usuario WHERE `usuario` = '$login' AND `senha`= '$senha'");
+$result = mysqli_query($con,"SELECT * FROM usuarios WHERE `usuario` = '$login' AND `senha`= '$senha'");
 // Verifica se o usuario logado esta ativo.
 if(mysqli_num_rows ($result) > 0 ) { 
     $_SESSION['login'] = $login;
