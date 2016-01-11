@@ -1,15 +1,15 @@
-<?php
-session_start();
-if((isset ($_SESSION['login']) == true) and (isset ($_SESSION['senha']) == true))
-{
-    unset($_SESSION['login']);
-    unset($_SESSION['senha']);
-    header('location:index.php');
-}
-$logado = $_SESSION['login'];
+<?php session_start();
+    if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+    {
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);
+        header('location:index.php');
+    }
+    $logado = $_SESSION['login'];
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
 
@@ -141,7 +141,7 @@ $logado = $_SESSION['login'];
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $logado;?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -154,7 +154,7 @@ $logado = $_SESSION['login'];
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>

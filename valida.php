@@ -1,4 +1,4 @@
-<?php 
+<?php session_start();
 // session_start inicia a sess�o session_start(); 
 // as variáveis login e senha recebem os dados digitados na p�gina anterior
 
