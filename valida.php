@@ -7,7 +7,7 @@ $senha = $_POST['senha'];
 
 //variaveis de conexão;
 
-$host = 'localhost';
+$host = '192.168.0.5';
 $usuario = 'master';
 $senhabd = '9748670';
 $banco = 'usuarios';

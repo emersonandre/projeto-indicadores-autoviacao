@@ -17,10 +17,10 @@ if ($ora_conexao = oci_connect($ora_user, $ora_senha,$ora_bd)) {
     echo 'Conectado!!!';
 }else	{	
 echo "Erro na conexão com o Oracle.";	
-}	
-
+}
 
 /*
+
 $sql = "select * from PCPEDIDO";
 
 $std = oci_parse($ora_conexao, $sql);
@@ -29,3 +29,5 @@ $result = oci_execute($std);
 
 while($row = oci_fetch_object($std)){
     echo $row->VLTOTAL."<br>";
+}
+ */
