@@ -13,12 +13,12 @@ $ora_bd = "(DESCRIPTION =
       (SERVICE_NAME = ORCL)
     )
   )";
-if ($ora_conexao = oci_connect($ora_user, $ora_senha,$ora_bd)) { 
-    echo 'Conectado!!!';
-}else	{	
-echo "Erro na conexão com o Oracle.";	
-}
 
+$conexao = oci_connect($ora_user, $ora_senha,$ora_bd);
+
+if (!$conexao) { 
+    echo "Erro na conexão com o Oracle.".oci_error();
+}
 /*
 
 $sql = "select * from PCPEDIDO";

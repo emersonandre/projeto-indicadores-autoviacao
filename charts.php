@@ -54,8 +54,7 @@
                 <!-- Flot Charts -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="page-header">Flot Charts</h2>
-                        <p class="lead">Flot is a pure JavaScript plotting library for jQuery, with a focus on simple usage, attractive looks and interactive features. For full usage instructions and documentation for Flot Charts, visit <a href="http://www.flotcharts.org/">http://www.flotcharts.org/</a>.</p>
+                        <h2 class="page-header">Gráfico</h2>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -64,11 +63,11 @@
                     <div class="col-lg-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Line Graph Example with Tooltips</h3>
+                                <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Gráfico de Linhas </h3>
                             </div>
                             <div class="panel-body">
                                 <div class="flot-chart">
-                                    <div class="flot-chart-content" id="flot-line-chart"></div>
+                                   <div class="flot-chart-content" id="teste"></div> 
                                 </div>
                             </div>
                         </div>
