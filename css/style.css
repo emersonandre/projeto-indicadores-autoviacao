@@ -2,15 +2,23 @@
 
 body {
 	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-  color:white;
+  color:#333;
   font-size:12px;
   background:#333 ;
+}
+
+#preloader {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    background: #ccc;
 }
 
 .divcenter{
   margin-top: 10%;
 }
-
 .frm {
   background-color: #dddddd;
   border: 1px solid #ffff00;

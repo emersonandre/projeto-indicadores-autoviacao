@@ -1,38 +1,18 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin - Bootstrap Admin Template</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
+    <head>
+        
+    </head>
+    
 <body>
-    
-    
+    <script src="../Chart.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    
+    <div style="width:100%">
+	<div>
+            <div id="myfirstchart" style="height: 250px;"></div>
+	</div>
+    </div>
     
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -40,38 +20,46 @@
     
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="./Chart/Chart.js"></script>
+    <script src="Chart/Chart.js"></script>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    
     <script type="text/javascript">
-        
-        
-        
-        
         //declaracao variaveis
         var meses = Array('Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro');
-        var cont = 0;
-        var data = new Date();
-        var mes = data.getMonth();
-        var ano = data.getFullYear();
-        var labelMeses = new Array();
-        
-        while(cont < 12){
-            
-            //escreve primeira parte do label se nao for  final
-            
-                labelMeses[cont] = meses[mes];//escreve com virgula
-            
-            
-            
-            if(mes == 0){
-                mes = 11;
-                ano = ano - 1;
-            }else{
-                mes = mes - 1;
-            }
-            cont++;
-        }
-        
-        
+        setInterval(function(){
+            $.ajax({
+                dataType:'json',
+                url: './ajax/ajaxFaturamentoRolito.php',
+                timeout: '30000',
+                error: function(){
+                    alert('Um erro Ocorreu, recarregue a pagina!');
+                },
+                success: function(retorno){   
+                    element: 'myfirstchart',
+                    data: [{ retorno }],
+                    xkey: 'ano',
+                    ykeys: ['value'],
+                    labels: ['Value']
+                });
+             }
+        };
+    });
+        new Morris.Line({
+
+  element: 'myfirstchart',
+  data: [
+    { 'ano': '2008', value: retorno }],
+  xkey: 'ano',
+  ykeys: ['value'],
+  labels: ['Value']
+});
+   
+   
+        /*
         setInterval(function(){
             $.ajax({
                 dataType:'json',
@@ -84,18 +72,16 @@
                     
                     //montagem grafico linhas
                     var lineChartData = {
-                    labels : [labelMeses[0],labelMeses[1],labelMeses[2],labelMeses[3],labelMeses[4],labelMeses[5],labelMeses[6],labelMeses[7],labelMeses[8],labelMeses[9],labelMeses[10],labelMeses[11]],
+                    labels : labelMeses,
                     datasets : [
                         {
                             label: "Faturamento",
-                            fillColor : "#2aabd2",
-                            strokeColor : "#449d44",
-                            pointColor : "#449d44",
+                            fillColor : "#C1CDCD",
+                            strokeColor : "#0000CD",
+                            pointColor : "#00CD00",
                             pointStrokeColor : "#D3D3D3",
                             pointHighlightFill : "#fff",
-                            pointHighlightStroke : "rgba(220,220,220,10)",
-                            datasetStrokeWidth:  2,
-                            scaleGridLineWidth:  10,
+                            pointHighlightStroke : "rgba(220,220,220,1)",
                             data : retorno
                         }
                     ]
@@ -411,6 +397,7 @@
                 };
 		var ctx = document.getElementById("fatRolito").getContext("2d");
 		window.myLine = new Chart(ctx).Line(lineChartData,defaultOptions);
+                responsive:true;
 	};
         
         grafico();
@@ -425,9 +412,8 @@
             
             
         },5000);
-        
+        */
         
     </script>
 </body>
-
 </html>

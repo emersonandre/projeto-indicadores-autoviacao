@@ -1,7 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
+    
+    
+    <div class="panel-body">
+                                <div class="flot-chart" >
+                                    
+                                    <div>
+                                        <canvas id="fatRolito" style="max-width:100%; max-height:100%;" width="2000" height="400"></canvas>
+                                   
+                                </div>
+                                </div>
+                            </div>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +25,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
+    <!-- Custom CSS 
     <link href="css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -30,9 +41,10 @@
 </head>
 
 <body>
-    
-    
-    <link rel="stylesheet" href="css/style.css">
+    <div id="grafico" class="container" >
+        <canvas id="fatRolito" style="max-height: 100%; max-width: 100%" width="1000" height="500" >  
+            </canvas>
+    </div>
     
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -40,26 +52,24 @@
     
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="./Chart/Chart.js"></script>
+    <script src="Chart/Chart.js"></script>
     <script type="text/javascript">
-        
-        
-        
-        
         //declaracao variaveis
         var meses = Array('Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro');
         var cont = 0;
         var data = new Date();
         var mes = data.getMonth();
         var ano = data.getFullYear();
-        var labelMeses = new Array();
+        var labelMeses = '';
         
         while(cont < 12){
             
             //escreve primeira parte do label se nao for  final
-            
-                labelMeses[cont] = meses[mes];//escreve com virgula
-            
+            if(cont<11){
+                labelMeses += meses[mes]+',';//escreve com virgula
+            }else{
+                labelMeses += meses[mes]+'';//escreve sem virgula no final
+            }
             
             
             if(mes == 0){
@@ -70,7 +80,7 @@
             }
             cont++;
         }
-        
+        alert(labelMeses);
         
         setInterval(function(){
             $.ajax({
@@ -84,18 +94,16 @@
                     
                     //montagem grafico linhas
                     var lineChartData = {
-                    labels : [labelMeses[0],labelMeses[1],labelMeses[2],labelMeses[3],labelMeses[4],labelMeses[5],labelMeses[6],labelMeses[7],labelMeses[8],labelMeses[9],labelMeses[10],labelMeses[11]],
+                    labels : labelMeses,
                     datasets : [
                         {
                             label: "Faturamento",
-                            fillColor : "#2aabd2",
-                            strokeColor : "#449d44",
-                            pointColor : "#449d44",
+                            fillColor : "#C1CDCD",
+                            strokeColor : "#0000CD",
+                            pointColor : "#00CD00",
                             pointStrokeColor : "#D3D3D3",
                             pointHighlightFill : "#fff",
-                            pointHighlightStroke : "rgba(220,220,220,10)",
-                            datasetStrokeWidth:  2,
-                            scaleGridLineWidth:  10,
+                            pointHighlightStroke : "rgba(220,220,220,1)",
                             data : retorno
                         }
                     ]
@@ -410,7 +418,8 @@
 		}
                 };
 		var ctx = document.getElementById("fatRolito").getContext("2d");
-		window.myLine = new Chart(ctx).Line(lineChartData,defaultOptions);
+		window.myLine = new Chart(ctx).Line(lineChartData, defaultOptions);
+               // defaultOptions.responsive:true;
 	};
         
         grafico();

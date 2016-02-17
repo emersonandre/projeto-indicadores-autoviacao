@@ -1,8 +1,11 @@
-<?php
-
-
-//conexao banco de dados oracle! WINTHOR
-
-// ----- abaixo retorna a consulta de vendas diarias! 
-
-//SELECT SUM(VLTOTAL) FROM PCNFSAID WHERE CODFILIAL='3' AND DTFAT >='01-JAN-2016' AND DTSAIDA <='12-JAN-2016' AND OBS IS NULL
+ <!--
+    <?php
+    session_start();
+    if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+    {
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);
+        header('location:dashboard.php');
+    }
+    $logado = $_SESSION['login'];
+    ?> -->
